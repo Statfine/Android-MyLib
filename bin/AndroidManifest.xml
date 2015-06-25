@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sj.mylib"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> 
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/> 
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    
+     <uses-permission android:name="android.permission.GET_TASKS" />
+     
+
+    <application
+        android:name="com.sj.mylib.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/lib"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.sj.mylib.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.sj.qq.QQActivity">
+        </activity>
+        
+        <activity
+            android:name="com.sj.wechat.WechatActivity">
+        </activity>
+        
+        <activity
+            android:name="com.sj.volley.VolleyActivity">
+        </activity>
+        
+        <!-- 微信服务  start-->
+        <activity
+            android:name="com.sj.mylib.wxapi.WXEntryActivity"
+            android:exported="true"  android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="sdksample" />
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name="com.sj.mylib.wxapi.WXAppRegister"
+            android:permission="com.tencent.mm.plugin.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <!-- 微信服务  end-->
+         
+        <!-- QQ服务  start-->
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1104596493" /> 
+            </intent-filter>
+        </activity>
+        <!-- QQ服务  end-->
+        
+        
+        <!-- 友盟服务  start-->
+        <meta-data android:value="5571175067e58e06be0023b4" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
+		
+		<service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity" android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <!-- 友盟服务  end-->
+        
+        
+    </application>
+
+</manifest>
